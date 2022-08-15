@@ -25,7 +25,12 @@ module.exports = {
                 use: {
                     loader: "ts-loader"
                 }
-            }
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
         ]
     },
     resolve: { extensions: ["*", ".tsx", ".ts", ".js", ".jsx" ] },
