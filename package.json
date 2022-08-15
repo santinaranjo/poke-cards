@@ -30,8 +30,10 @@
     "webpack-dev-server": "^4.10.0"
   },
   "dependencies": {
+    "pokeapi-js-wrapper": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5"
   }
 }
