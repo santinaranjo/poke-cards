@@ -19,7 +19,9 @@ export const fetchImageList = (apiURL: string, listOfURLs: Array<string>, localS
         fetchBlobList(listOfURLs)
             .then(res => {
                 setData(res)
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000)
             })
     }, [])
 
