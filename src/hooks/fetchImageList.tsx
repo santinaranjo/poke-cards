@@ -17,7 +17,7 @@ export const fetchImageList = (apiURL: string, listOfURLs: Array<string>, localS
 
     React.useEffect(() => {
         fetchBlobList(listOfURLs)
-            .then(res => {
+            .then(async res => {
                 setData(res)
                 setTimeout(() => {
                     setLoading(false)

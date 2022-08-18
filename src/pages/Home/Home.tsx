@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { fetchImageList } from "../hooks/fetchImageList";
-import { LoadingGame } from "./LoadingGame";
+import { fetchImageList } from "../../hooks/fetchImageList";
+import { LoadingGame } from "../../components/LoadingGame/LoadingGame";
 import { useRecoilState } from "recoil";
-import { imagesContext } from "../context/imagesContext";
+import { imagesContext } from "../../context/imagesContext";
 
 const URL_API = "https://pokeapi.co/api/v2/pokemon/"
 const POKE_NAMES = [ "pikachu", "bulbasaur", "charmander", "charizard", "squirtle", "caterpie", "rattata", "pidgey" ]
