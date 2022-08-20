@@ -6,7 +6,7 @@ import { GameCard } from "../GameCard/GameCard";
 import { Section } from "./styles"
 
 interface CardState {
-    id: number;
+    sharedId: number;
     url: string;
 }
 
@@ -25,7 +25,7 @@ export const GameGrid = () => {
 
         for (let index = 0; index < imageURLs.length; index++) {
             const element = imageURLs[index];
-            cards.push({ id: index, url: element })
+            cards.push({ sharedId: index, url: element })
         }
 
         let duplicatedCards = cards.flatMap(value => [ value, value ])
@@ -35,14 +35,22 @@ export const GameGrid = () => {
             .sort(( a,b ) => a.sort - b.sort)
             .map(({ value }) => value)
 
+
+        let cardsWithId = []
+
+        for (let index = 0; index < shuffledCards.length; index++) {
+            const element = shuffledCards[index];
+            cardsWithId.push({ uniqueId: index, sharedId: element.sharedId, url: element.url })
+        }
+
         setCardData(shuffledCards)
-        console.log(duplicatedCards)
+        console.log(cardsWithId)
     }, [])
 
     return(
         <Section>
             {
-                cardData.map((value, index) => <GameCard onClick={findCardPair} id={value.id} url={value.url} key={`card-${index}`} /> )
+                cardData.map((value, index) => <GameCard findCardPair={findCardPair} id={value.sharedId} url={value.url} key={`card-${index}`} /> )
             }
         </Section>
     )
