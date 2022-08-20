@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "./styles";
-// import { useRecoilValue } from "recoil";
-// import { cardContextFlip } from "../../context/cardContext"
+import { useRecoilState } from "recoil";
+import { flippedCardsContext, cardsToValidateContext } from "../../context/cardContext"
 
 interface GameCardParams {
     sharedId: number;
@@ -11,14 +11,40 @@ interface GameCardParams {
 }
 
 export const GameCard = (card: GameCardParams) => {
-    // const { flip } = useRecoilValue(cardContextFlip)
     const [ flip, setFlip ] = React.useState(false)
+    const [ flippedCards, setFlippedCards ] = useRecoilState<any>(flippedCardsContext)
+
+    const pushToFlippedCards = () => {
+        let newArray: Array<Object> = [...flippedCards]
+        newArray.push({ uniqueId: card.uniqueId })
+        setFlippedCards(newArray)
+    }
 
     const handleClick = () => {
+        if (flip) {
+            console.log("Ya esta pa arriba")
+        } else {
+            setFlip(true)
+            pushToFlippedCards()
+        }
         card.findCardPair()
-        setFlip(!flip)
         console.log(`Click en card: sharedId-${card.sharedId} uniqueId-${card.uniqueId}`)
     }
+
+    const checkFlipped = () => {
+        const findFlip = flippedCards.find( (element: { uniqueId: number; })  => element.uniqueId === card.uniqueId )
+
+        if (findFlip) {
+            console.log("ta dentro del estado flipped")
+            setFlip(true)
+        } else {
+            setFlip(false)
+        }
+    }
+
+    React.useEffect(() => {
+        checkFlipped()
+    }, [ flippedCards ])
 
     return(
         <Card onClick={handleClick}>

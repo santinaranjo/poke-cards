@@ -1,11 +1,11 @@
 import { atom } from "recoil";
 
-export const flippedCards = atom({
-    key: "flippedCards",
+export const flippedCardsContext = atom({
+    key: "flippedCardsContext",
     default: []
 })
 
-export const cardsToValidate = atom({
-    key: "cardsToValidate",
+export const cardsToValidateContext = atom({
+    key: "cardsToValidateContext",
     default: []
 })
