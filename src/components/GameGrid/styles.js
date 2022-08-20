@@ -4,7 +4,7 @@ export const Section = styled.section`
     display: flex;
     flex-wrap: wrap;
     width: 300px;
-
+    margin-left: 30px;
     div {
         flex-grow: 1;
         flex-shrink: 0;
