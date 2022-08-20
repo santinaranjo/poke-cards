@@ -1,11 +1,11 @@
 import React from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { imagesContext } from "../../context/imagesContext";
-import { cardContextFlip } from "../../context/cardContext"
 import { GameCard } from "../GameCard/GameCard";
 import { Section } from "./styles"
 
 interface CardState {
+    uniqueId: number;
     sharedId: number;
     url: string;
 }
@@ -13,11 +13,9 @@ interface CardState {
 export const GameGrid = () => {
     const imageURLs = useRecoilValue(imagesContext)
     const [ cardData, setCardData ] = React.useState<Array<CardState>>([])
-    const [ cardContextData, setCardContextData ] = useRecoilState(cardContextFlip)
 
     const findCardPair = () => {
         console.log(`se da click en una card`)
-        setCardContextData({ flip: (!cardContextData.flip) })
     }
 
     React.useEffect(() => {
@@ -43,14 +41,14 @@ export const GameGrid = () => {
             cardsWithId.push({ uniqueId: index, sharedId: element.sharedId, url: element.url })
         }
 
-        setCardData(shuffledCards)
+        setCardData(cardsWithId)
         console.log(cardsWithId)
     }, [])
 
     return(
         <Section>
             {
-                cardData.map((value, index) => <GameCard findCardPair={findCardPair} id={value.sharedId} url={value.url} key={`card-${index}`} /> )
+                cardData.map((value, index) => <GameCard findCardPair={findCardPair} sharedId={value.sharedId} uniqueId={value.uniqueId} url={value.url} key={`card-${index}`} /> )
             }
         </Section>
     )

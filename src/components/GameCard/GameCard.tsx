@@ -4,7 +4,8 @@ import { Card } from "./styles";
 // import { cardContextFlip } from "../../context/cardContext"
 
 interface GameCardParams {
-    id: number;
+    sharedId: number;
+    uniqueId: number;
     url: string;
     findCardPair: Function;
 }
@@ -16,7 +17,7 @@ export const GameCard = (card: GameCardParams) => {
     const handleClick = () => {
         card.findCardPair()
         setFlip(!flip)
-        console.log(`Click en card ${card.id}`)
+        console.log(`Click en card: sharedId-${card.sharedId} uniqueId-${card.uniqueId}`)
     }
 
     return(
