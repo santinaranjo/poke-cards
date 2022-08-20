@@ -6,6 +6,7 @@ const cardHeight = "100px";
 export const Card = styled.div`
     width: ${cardWidth};
     height: ${cardHeight};
+
     .card {
         width: 65px;
         height: 100px;
@@ -38,11 +39,17 @@ export const Card = styled.div`
     }
 
     .front {
-        
         background-color: blue;
     }
     .back {
         transform: rotateY(180deg);
         background-color: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 85%;
+            height: auto;
+        }
     }
 `

@@ -11,10 +11,6 @@ export const GameCard = (card: GameCardParams) => {
 
     const handleClick = () => setFlip(!flip)
 
-    React.useEffect(() => {
-        console.log(flip)
-    }, [ flip ])
-
     return(
         <Card onClick={handleClick}>
             <div className={`card${flip ? "-flip" : ""}`}>

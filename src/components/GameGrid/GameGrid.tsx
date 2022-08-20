@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { imagesContext } from "../../context/imagesContext";
 import { GameCard } from "../GameCard/GameCard";
+import { Section } from "./styles"
 
 interface CardState {
     id: number;
@@ -20,15 +21,22 @@ export const GameGrid = () => {
             cards.push({ id: index, url: element })
         }
 
-        setCardData(cards)
-        console.log(cards)
+        let duplicatedCards = cards.flatMap(value => [ value, value ])
+
+        let shuffledCards = duplicatedCards
+            .map(value => ({ value, sort: Math.random() }))
+            .sort(( a,b ) => a.sort - b.sort)
+            .map(({ value }) => value)
+
+        setCardData(shuffledCards)
+        console.log(duplicatedCards)
     }, [])
 
     return(
-        <React.Fragment>
+        <Section>
             {
-                cardData.map(value => <GameCard id={value.id} url={value.url} key={value.id} /> )
+                cardData.map((value, index) => <GameCard id={value.id} url={value.url} key={`card-${index}`} /> )
             }
-        </React.Fragment>
+        </Section>
     )
 }
