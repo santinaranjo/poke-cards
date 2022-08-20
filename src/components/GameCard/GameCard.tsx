@@ -13,6 +13,7 @@ interface GameCardParams {
 export const GameCard = (card: GameCardParams) => {
     const [ flip, setFlip ] = React.useState(false)
     const [ flippedCards, setFlippedCards ] = useRecoilState<any>(flippedCardsContext)
+    const [ cardsToValidate, setCardsToValidate ] = useRecoilState<any>(cardsToValidateContext)
 
     const pushToFlippedCards = () => {
         let newArray: Array<Object> = [...flippedCards]
@@ -20,12 +21,46 @@ export const GameCard = (card: GameCardParams) => {
         setFlippedCards(newArray)
     }
 
+    const pushToValidateContext = () => {
+        let newArray: Array<Object> = [...cardsToValidate]
+        newArray.push({ uniqueId: card.uniqueId, sharedId: card.sharedId })
+        setCardsToValidate(newArray)
+    }
+
+    const removeUnmatchedCards = () => {
+        let newArray: Array<Object> = [...flippedCards]
+        const firstIndex = newArray.findIndex((value: any) => value.uniqueId === cardsToValidate[0].uniqueId)
+        const secondIndex = newArray.findIndex((value: any) => value.uniqueId === cardsToValidate[1].uniqueId)
+        
+        newArray.splice(firstIndex, 1)
+        newArray.splice(secondIndex, 1)
+
+        setFlippedCards(newArray)
+    }
+
     const handleClick = () => {
         if (flip) {
             console.log("Ya esta pa arriba")
         } else {
-            setFlip(true)
-            pushToFlippedCards()
+            if (cardsToValidate.length === 2) {
+                console.log("Se estan validando cartas")
+            } else if (cardsToValidate.length === 1) {
+                setFlip(true)
+                pushToFlippedCards()
+                pushToValidateContext()
+                if (cardsToValidate[0].sharedId === cardsToValidate[1].sharedId) {
+                    setCardsToValidate([])
+                } else {
+                    removeUnmatchedCards()
+                    setCardsToValidate([])
+                }
+            } else {
+                setFlip(true)
+                pushToFlippedCards()
+                pushToValidateContext()
+                console.log(cardsToValidate)
+            }
+            
         }
         card.findCardPair()
         console.log(`Click en card: sharedId-${card.sharedId} uniqueId-${card.uniqueId}`)
@@ -35,7 +70,6 @@ export const GameCard = (card: GameCardParams) => {
         const findFlip = flippedCards.find( (element: { uniqueId: number; })  => element.uniqueId === card.uniqueId )
 
         if (findFlip) {
-            console.log("ta dentro del estado flipped")
             setFlip(true)
         } else {
             setFlip(false)
