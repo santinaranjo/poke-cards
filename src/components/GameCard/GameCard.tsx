@@ -30,11 +30,9 @@ export const GameCard = (card: GameCardParams) => {
     const removeUnmatchedCards = () => {
         let newArray: Array<Object> = [...flippedCards]
         const firstIndex = newArray.findIndex((value: any) => value.uniqueId === cardsToValidate[0].uniqueId)
-        const secondIndex = newArray.findIndex((value: any) => value.uniqueId === cardsToValidate[1].uniqueId)
         
         newArray.splice(firstIndex, 1)
-        newArray.splice(secondIndex, 1)
-
+        setFlip(false)
         setFlippedCards(newArray)
     }
 
@@ -46,14 +44,15 @@ export const GameCard = (card: GameCardParams) => {
                 console.log("Se estan validando cartas")
             } else if (cardsToValidate.length === 1) {
                 setFlip(true)
-                pushToFlippedCards()
-                pushToValidateContext()
-                if (cardsToValidate[0].sharedId === cardsToValidate[1].sharedId) {
-                    setCardsToValidate([])
-                } else {
-                    removeUnmatchedCards()
-                    setCardsToValidate([])
-                }
+                setTimeout(() => {
+                    if (cardsToValidate[0].sharedId === card.sharedId) {
+                        setCardsToValidate([])
+                        pushToFlippedCards()
+                    } else {
+                        removeUnmatchedCards()
+                        setCardsToValidate([])
+                    }
+                }, 500)
             } else {
                 setFlip(true)
                 pushToFlippedCards()
