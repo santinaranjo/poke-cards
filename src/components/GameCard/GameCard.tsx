@@ -44,6 +44,12 @@ export const GameCard = (card: GameCardParams) => {
                 console.log("Se estan validando cartas")
             } else if (cardsToValidate.length === 1) {
                 setFlip(true)
+                setCardsToValidate((oldList: any) => [
+                    ...oldList,
+                    {
+                        value: "dummyObject"
+                    }
+                ])
                 setTimeout(() => {
                     if (cardsToValidate[0].sharedId === card.sharedId) {
                         setCardsToValidate([])
