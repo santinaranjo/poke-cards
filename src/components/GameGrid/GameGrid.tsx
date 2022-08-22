@@ -54,6 +54,7 @@ export const GameGrid = () => {
         }
 
         setCardData(cardsWithId)
+        setGameCompleted(false)
     }, [])
 
     return(

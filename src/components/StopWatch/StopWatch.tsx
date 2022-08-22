@@ -7,14 +7,11 @@ export const StopWatch = () => {
     const [ stopWatchTime, setStopWatchTime ] = useRecoilState(stopWatchTimeContext)
 
     React.useEffect(() => {
-        setStopWatchRunning(true)
-    }, [])
-
-    React.useEffect(() => {
-        if ( stopWatchRunning ) {
+        let timeInterval: any
+        if (stopWatchRunning) {
             let timeSec = 0
             let timeMin = 0
-            setInterval(() => {
+            timeInterval = setInterval(() => {
                 timeSec++
                 let showTime = { min: "", seg: "" }
                 if (timeSec < 10) {
@@ -33,13 +30,19 @@ export const StopWatch = () => {
                 }
                 setStopWatchTime({ min: `${showTime.min}`, seg: `${showTime.seg}` })
             }, 1000)
-        } else {
-            setStopWatchTime({ min: `00`, seg: `00` })
+        } else if (!stopWatchRunning) {
+            clearInterval(timeInterval)
         }
+        return () => clearInterval(timeInterval)
     }, [stopWatchRunning])
+
+    React.useEffect(() => {
+        setStopWatchTime({ min: `00`, seg: `00` })
+    }, [])
+
     return(
         <React.Fragment>
-            <span>{`Time: ${stopWatchTime.min}:${stopWatchTime.seg}`}</span>
+            <span>{`Tiempo: ${stopWatchTime.min}:${stopWatchTime.seg}`}</span>
         </React.Fragment>
     )
 }
