@@ -20,7 +20,7 @@ export const GameGrid = () => {
 
 
     const findCardPair = () => {
-        console.log(`se da click en una card`)
+        null
     }
 
     React.useEffect(() => {

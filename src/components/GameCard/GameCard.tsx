@@ -38,10 +38,10 @@ export const GameCard = (card: GameCardParams) => {
 
     const handleClick = () => {
         if (flip) {
-            console.log("Ya esta pa arriba")
+            null
         } else {
             if (cardsToValidate.length === 2) {
-                console.log("Se estan validando cartas")
+                null
             } else if (cardsToValidate.length === 1) {
                 setFlip(true)
                 setCardsToValidate((oldList: any) => [

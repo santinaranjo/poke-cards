@@ -22,7 +22,6 @@ export const fetchImageList = (apiURL: string, listOfURLs: Array<string>, localS
                 setTimeout(() => {
                     setLoading(false)
                 }, 1000)
-                console.log(res)
             })
     }, [])
 
