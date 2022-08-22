@@ -63,12 +63,10 @@ export const GameCard = (card: GameCardParams) => {
                 setFlip(true)
                 pushToFlippedCards()
                 pushToValidateContext()
-                console.log(cardsToValidate)
             }
             
         }
         card.findCardPair()
-        console.log(`Click en card: sharedId-${card.sharedId} uniqueId-${card.uniqueId}`)
     }
 
     const checkFlipped = () => {

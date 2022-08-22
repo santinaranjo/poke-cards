@@ -3,6 +3,8 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import { imagesContext } from "../../context/imagesContext";
 import { GameCard } from "../GameCard/GameCard";
 import { Section } from "./styles"
+import { flippedCardsContext } from "../../context/cardContext"
+import { gameCompletedContext } from "../../context/gameContext"
 
 interface CardState {
     uniqueId: number;
@@ -13,10 +15,20 @@ interface CardState {
 export const GameGrid = () => {
     const imageURLs = useRecoilValue(imagesContext)
     const [ cardData, setCardData ] = React.useState<Array<CardState>>([])
+    const flippedCards = useRecoilValue(flippedCardsContext)
+    const [ gameCompleted, setGameCompleted ] = useRecoilState(gameCompletedContext)
+
 
     const findCardPair = () => {
         console.log(`se da click en una card`)
     }
+
+    React.useEffect(() => {
+        if (flippedCards.length === 16) {
+            setGameCompleted(true)
+            console.log("Has completado el juego")
+        }
+    }, [flippedCards])
 
     React.useEffect(() => {
         let cards = []
@@ -42,7 +54,6 @@ export const GameGrid = () => {
         }
 
         setCardData(cardsWithId)
-        console.log(cardsWithId)
     }, [])
 
     return(

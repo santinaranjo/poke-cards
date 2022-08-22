@@ -3,6 +3,7 @@ import { Home } from "./pages/Home/Home";
 import { GameMode } from "./pages/GameMode/GameMode";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./styles/GlobalStyles";
+import { OnePlayerNoTime } from "./pages/OnePlayerNoTime/OnePlayerNoTime";
 
 // Temporal para dev
 import { GameGrid } from "./components/GameGrid/GameGrid";
@@ -16,6 +17,7 @@ export const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/gamemode" element={<GameMode />} />
                 <Route path="/gamegrid" element={<GameGrid />} />
+                <Route path="/oneplayer-notime" element={<OnePlayerNoTime />} />
             </Routes>
         </BrowserRouter>
     )
