@@ -42,7 +42,7 @@ export const StopWatch = () => {
 
     return(
         <React.Fragment>
-            <span>{`Tiempo: ${stopWatchTime.min}:${stopWatchTime.seg}`}</span>
+            <span>{`${stopWatchTime.min}:${stopWatchTime.seg}`}</span>
         </React.Fragment>
     )
 }

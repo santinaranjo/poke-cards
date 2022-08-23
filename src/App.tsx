@@ -7,6 +7,7 @@ import { OnePlayerNoTime } from "./pages/OnePlayerNoTime/OnePlayerNoTime";
 
 //Dev
 import { StopWatch } from "./components/StopWatch/StopWatch";
+import { Timer } from "./components/Timer/Timer";
 
 
 export const App = () => {
@@ -19,6 +20,7 @@ export const App = () => {
                 <Route path="/oneplayer-notime" element={<OnePlayerNoTime />} />
                 //Dev
                 <Route path="/stopwatch" element={<StopWatch />} />
+                <Route path="/timer" element={<Timer />} />
             </Routes>
         </BrowserRouter>
     )

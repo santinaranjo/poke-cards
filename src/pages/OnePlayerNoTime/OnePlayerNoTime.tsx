@@ -22,7 +22,7 @@ export const OnePlayerNoTime = () => {
         setStopWatchRunning(true)
     }, [])
 
-    const handleClick = () => {
+    const handlePauseClick = () => {
         setStopWatchRunning(false)
     }
 
@@ -30,7 +30,8 @@ export const OnePlayerNoTime = () => {
         <React.Fragment>
             <StopWatch />
             <GameGrid />
-            <button onClick={handleClick}>Parar</button>
+            <button>Pausar</button>
+            <button>Reiniciar</button>
         </React.Fragment>
         
     )
