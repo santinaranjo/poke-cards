@@ -1,29 +1,17 @@
-import React, { useEffect } from "react";
-import { Navigate } from "react-router-dom";
-import { fetchImageList } from "../../hooks/fetchImageList";
-import { LoadingGame } from "../../components/LoadingGame/LoadingGame";
-import { useRecoilState } from "recoil";
-import { imagesContext } from "../../context/imagesContext";
-
-const URL_API = "https://pokeapi.co/api/v2/pokemon/"
-const POKE_NAMES = [ "pikachu", "bulbasaur", "charmander", "charizard", "squirtle", "caterpie", "rattata", "pidgey" ]
-const LOCAL_STORAGE_KEY = "POKE_DATA"
+import React, { useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
+import { fetchImageList } from '../../hooks/fetchImageList'
+import { LoadingGame } from '../../components/LoadingGame/LoadingGame'
+import { useRecoilState } from 'recoil'
+import { imagesContext } from '../../context/imagesContext'
+import { createImageUrls } from '../../hooks/createImageUrls'
 
 export const Home = () => {
-    const { data, loading } = fetchImageList(URL_API, POKE_NAMES, LOCAL_STORAGE_KEY)
-    const [ imageURLs, setImageURLs ] = useRecoilState(imagesContext)
+    const loading = createImageUrls()
 
-    useEffect(() => {
-        setImageURLs(data)
-    }, data)
-
-    return(
+    return (
         <React.Fragment>
-            {
-                loading
-                    ?   <LoadingGame />
-                    :   <Navigate to="/gamemode" />
-            }
+            {loading ? <LoadingGame /> : <Navigate to="/gamemode" />}
         </React.Fragment>
     )
 }
