@@ -9,10 +9,9 @@ import {
     cardsToValidateContext,
 } from '../../context/cardContext'
 import { flushSync } from 'react-dom'
+import { activeCardsContext } from '../../context/cardContext'
 
 export const Controlls = () => {
-    const [stopWatchTime, setStopWatchTime] =
-        useRecoilState(stopWatchTimeContext)
     const [stopWatchRunning, setStopWatchRunning] =
         useRecoilState<any>(stopWatchContext)
     const [flippedCards, setFlippedCards] =
@@ -20,6 +19,8 @@ export const Controlls = () => {
     const [cardsToValidate, setCardsToValidate] = useRecoilState<any>(
         cardsToValidateContext
     )
+    const [activeCards, setActiveCards] =
+        useRecoilState<any>(activeCardsContext)
 
     const handleRestart = () => {
         flushSync(() => {
@@ -30,12 +31,20 @@ export const Controlls = () => {
         setStopWatchRunning(true)
     }
 
+    const handlePauseClick = () => {
+        setStopWatchRunning(false)
+        setActiveCards(true)
+    }
+
+    const handleResumeClick = () => {
+        setStopWatchRunning('play')
+        setActiveCards(false)
+    }
+
     return (
         <React.Fragment>
-            <button onClick={() => setStopWatchRunning(false)}>Pausar</button>
-            <button onClick={() => setStopWatchRunning('play')}>
-                Reanudar
-            </button>
+            <button onClick={handlePauseClick}>Pausar</button>
+            <button onClick={handleResumeClick}>Reanudar</button>
             <button onClick={handleRestart}>Reiniciar</button>
         </React.Fragment>
     )
