@@ -15,10 +15,10 @@ export const StopWatch = () => {
         let timeInterval: any
         let timeSec = 0
         let timeMin = 0
+        let showTime = { min: '', seg: '' }
         if (stopWatchRunning) {
             timeInterval = setInterval(() => {
                 timeSec++
-                let showTime = { min: '', seg: '' }
                 if (timeSec < 10) {
                     showTime.seg = `0${timeSec}`
                 } else if (timeSec < 60) {
@@ -40,6 +40,9 @@ export const StopWatch = () => {
             }, 1000)
         } else if (!stopWatchRunning) {
             clearInterval(timeInterval)
+        } else if (stopWatchRunning === 'restart') {
+            clearInterval(timeInterval)
+            showTime = { min: '', seg: '' }
         }
         return () => clearInterval(timeInterval)
     }, [stopWatchRunning])

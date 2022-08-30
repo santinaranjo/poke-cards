@@ -8,6 +8,7 @@ import {
     flippedCardsContext,
     cardsToValidateContext,
 } from '../../context/cardContext'
+import { flushSync } from 'react-dom'
 
 export const Controlls = () => {
     const [stopWatchTime, setStopWatchTime] =
@@ -21,7 +22,10 @@ export const Controlls = () => {
     )
 
     const handleRestart = () => {
-        setStopWatchRunning('restart')
+        flushSync(() => {
+            setStopWatchRunning('restart')
+        })
+        setStopWatchRunning('restarted')
     }
 
     return (
