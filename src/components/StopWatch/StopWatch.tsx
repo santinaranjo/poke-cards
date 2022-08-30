@@ -1,4 +1,5 @@
 import React from 'react'
+import { flushSync } from 'react-dom'
 import { useRecoilState } from 'recoil'
 import {
     stopWatchContext,
@@ -7,7 +8,7 @@ import {
 
 export const StopWatch = () => {
     const [stopWatchRunning, setStopWatchRunning] =
-        useRecoilState(stopWatchContext)
+        useRecoilState<any>(stopWatchContext)
     const [stopWatchTime, setStopWatchTime] =
         useRecoilState(stopWatchTimeContext)
 
@@ -16,7 +17,11 @@ export const StopWatch = () => {
         let timeSec = 0
         let timeMin = 0
         let showTime = { min: '', seg: '' }
-        if (stopWatchRunning) {
+        if (stopWatchRunning || stopWatchRunning === 'play') {
+            if (stopWatchRunning === 'play') {
+                timeSec = Number(stopWatchTime.seg)
+                timeMin = Number(stopWatchTime.min)
+            }
             timeInterval = setInterval(() => {
                 timeSec++
                 if (timeSec < 10) {
@@ -41,8 +46,10 @@ export const StopWatch = () => {
         } else if (!stopWatchRunning) {
             clearInterval(timeInterval)
         } else if (stopWatchRunning === 'restart') {
+            flushSync(() => {
+                setStopWatchTime({ min: `00`, seg: `00` })
+            })
             clearInterval(timeInterval)
-            showTime = { min: '', seg: '' }
         }
         return () => clearInterval(timeInterval)
     }, [stopWatchRunning])

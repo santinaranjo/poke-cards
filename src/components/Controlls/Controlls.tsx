@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRecoilState, useResetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import {
     stopWatchContext,
     stopWatchTimeContext,
@@ -24,14 +24,18 @@ export const Controlls = () => {
     const handleRestart = () => {
         flushSync(() => {
             setStopWatchRunning('restart')
+            setFlippedCards([])
+            setCardsToValidate([])
         })
-        setStopWatchRunning('restarted')
+        setStopWatchRunning(true)
     }
 
     return (
         <React.Fragment>
             <button onClick={() => setStopWatchRunning(false)}>Pausar</button>
-            <button onClick={() => setStopWatchRunning(true)}>Reanudar</button>
+            <button onClick={() => setStopWatchRunning('play')}>
+                Reanudar
+            </button>
             <button onClick={handleRestart}>Reiniciar</button>
         </React.Fragment>
     )
