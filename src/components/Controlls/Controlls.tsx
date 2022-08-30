@@ -22,7 +22,7 @@ export const Controlls = () => {
     const [activeCards, setActiveCards] =
         useRecoilState<any>(activeCardsContext)
 
-    const handleRestart = () => {
+    const handleRestartClick = () => {
         flushSync(() => {
             setStopWatchRunning('restart')
             setFlippedCards([])
@@ -45,7 +45,7 @@ export const Controlls = () => {
         <React.Fragment>
             <button onClick={handlePauseClick}>Pausar</button>
             <button onClick={handleResumeClick}>Reanudar</button>
-            <button onClick={handleRestart}>Reiniciar</button>
+            <button onClick={handleRestartClick}>Reiniciar</button>
         </React.Fragment>
     )
 }

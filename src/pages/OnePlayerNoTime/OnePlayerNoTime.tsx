@@ -2,6 +2,7 @@ import React from 'react'
 import { GameGrid } from '../../components/GameGrid/GameGrid'
 import { StopWatch } from '../../components/StopWatch/StopWatch'
 import { Controlls } from '../../components/Controlls/Controlls'
+import { PairsCounter } from '../../components/PairsCounter/PairsCounter'
 import {
     stopWatchContext,
     stopWatchTimeContext,
@@ -39,7 +40,10 @@ export const OnePlayerNoTime = () => {
                 'Cargando...'
             ) : (
                 <React.Fragment>
-                    <StopWatch />
+                    <div>
+                        <StopWatch />
+                    </div>
+                    <PairsCounter />
                     <GameGrid />
                     <Controlls />
                 </React.Fragment>
