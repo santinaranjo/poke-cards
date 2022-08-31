@@ -30,10 +30,6 @@ export const OnePlayerNoTime = () => {
         setStopWatchRunning(true)
     }, [])
 
-    const handlePauseClick = () => {
-        setStopWatchRunning(false)
-    }
-
     return (
         <React.Fragment>
             {loading ? (
