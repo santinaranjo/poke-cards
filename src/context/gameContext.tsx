@@ -1,6 +1,11 @@
-import { atom } from "recoil";
+import { atom } from 'recoil'
 
 export const gameCompletedContext = atom({
-    key: "gameCompletedContext",
-    default: false
+    key: 'gameCompletedContext',
+    default: false,
+})
+
+export const gameRestartContext = atom({
+    key: 'gameRestartContext',
+    default: false,
 })
