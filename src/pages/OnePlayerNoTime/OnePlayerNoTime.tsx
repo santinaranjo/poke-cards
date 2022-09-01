@@ -10,6 +10,8 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { gameCompletedContext } from '../../context/gameContext'
 import { createImageUrls } from '../../hooks/createImageUrls'
+import { Endgame } from '../../components/Endgame/Endgame'
+import { endgameCardContext } from '../../context/endgameContext'
 
 export const OnePlayerNoTime = () => {
     const stopWatchTime = useRecoilValue(stopWatchTimeContext)
@@ -18,16 +20,19 @@ export const OnePlayerNoTime = () => {
     const [gameCompleted, setGameCompleted] =
         useRecoilState(gameCompletedContext)
     const loading = createImageUrls()
+    const [endgameCard, setEndgameCard] = useRecoilState(endgameCardContext)
 
     React.useEffect(() => {
         if (gameCompleted) {
             setStopWatchRunning(false)
             console.log(`Has tardado ${stopWatchTime.min}:${stopWatchTime.seg}`)
+            setEndgameCard(true)
         }
     }, [gameCompleted])
 
     React.useEffect(() => {
         setStopWatchRunning(true)
+        setEndgameCard(true)
     }, [])
 
     return (
@@ -42,6 +47,7 @@ export const OnePlayerNoTime = () => {
                     <PairsCounter />
                     <GameGrid />
                     <Controlls controllSelector="" />
+                    <Endgame />
                 </React.Fragment>
             )}
         </React.Fragment>
