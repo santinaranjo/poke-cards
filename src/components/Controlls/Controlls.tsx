@@ -11,6 +11,7 @@ import {
 import { flushSync } from 'react-dom'
 import { activeCardsContext } from '../../context/cardContext'
 import { gameRestartContext } from '../../context/gameContext'
+import { endgameCardContext } from '../../context/endgameContext'
 
 export const Controlls = (param: { controllSelector: string }) => {
     const [stopWatchRunning, setStopWatchRunning] =
@@ -23,6 +24,7 @@ export const Controlls = (param: { controllSelector: string }) => {
     const [activeCards, setActiveCards] =
         useRecoilState<any>(activeCardsContext)
     const [gameRestart, setGameRestart] = useRecoilState(gameRestartContext)
+    const [endgameCard, setEndgameCard] = useRecoilState(endgameCardContext)
 
     const handleRestartClick = () => {
         flushSync(() => {
@@ -30,6 +32,7 @@ export const Controlls = (param: { controllSelector: string }) => {
             setFlippedCards([])
             setCardsToValidate([])
             setTimeout(() => setGameRestart(true), 300)
+            setEndgameCard(false)
         })
         setStopWatchRunning(true)
     }

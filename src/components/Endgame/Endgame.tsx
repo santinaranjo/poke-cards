@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { endgameCardContext } from '../../context/endgameContext'
 import { Controlls } from '../Controlls/Controlls'
@@ -13,7 +14,7 @@ export const Endgame = () => {
                     <Section>
                         <div>
                             <Controlls controllSelector="restart" />
-                            <p>Volver al Menu</p>
+                            <Link to="/gamemode">Volver al Menu</Link>
                         </div>
                     </Section>
                 </React.Fragment>

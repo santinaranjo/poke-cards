@@ -32,7 +32,7 @@ export const OnePlayerNoTime = () => {
 
     React.useEffect(() => {
         setStopWatchRunning(true)
-        setEndgameCard(true)
+        setEndgameCard(false)
     }, [])
 
     return (
