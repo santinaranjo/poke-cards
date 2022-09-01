@@ -12,7 +12,7 @@ import { flushSync } from 'react-dom'
 import { activeCardsContext } from '../../context/cardContext'
 import { gameRestartContext } from '../../context/gameContext'
 
-export const Controlls = () => {
+export const Controlls = (param: { controllSelector: string }) => {
     const [stopWatchRunning, setStopWatchRunning] =
         useRecoilState<any>(stopWatchContext)
     const [flippedCards, setFlippedCards] =
@@ -46,9 +46,17 @@ export const Controlls = () => {
 
     return (
         <React.Fragment>
-            <button onClick={handlePauseClick}>Pausar</button>
-            <button onClick={handleResumeClick}>Reanudar</button>
-            <button onClick={handleRestartClick}>Reiniciar</button>
+            {param.controllSelector === 'restart' ? (
+                <React.Fragment>
+                    <button onClick={handleRestartClick}>Reiniciar</button>
+                </React.Fragment>
+            ) : (
+                <React.Fragment>
+                    <button onClick={handlePauseClick}>Pausar</button>
+                    <button onClick={handleResumeClick}>Reanudar</button>
+                    <button onClick={handleRestartClick}>Reiniciar</button>
+                </React.Fragment>
+            )}
         </React.Fragment>
     )
 }

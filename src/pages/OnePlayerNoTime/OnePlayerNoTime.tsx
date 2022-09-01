@@ -41,7 +41,7 @@ export const OnePlayerNoTime = () => {
                     </div>
                     <PairsCounter />
                     <GameGrid />
-                    <Controlls />
+                    <Controlls controllSelector="" />
                 </React.Fragment>
             )}
         </React.Fragment>
