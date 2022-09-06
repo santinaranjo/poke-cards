@@ -1,11 +1,11 @@
-const path = require("path");
-const HtmlWepackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const HtmlWepackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: path.join(__dirname, "src", "index.tsx"),
+    entry: path.join(__dirname, 'src', 'index.tsx'),
     output: {
-        path: path.resolve(__dirname, "dist/"),
-        filename: "bundle.js"
+        path: path.resolve(__dirname, 'dist/'),
+        filename: 'bundle.js',
     },
     module: {
         rules: [
@@ -13,35 +13,47 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"]
-                    }
-                }
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react',
+                            '@babel/preset-typescript',
+                        ],
+                    },
+                },
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                    loader: "ts-loader"
-                }
+                    loader: 'ts-loader',
+                },
             },
             {
                 test: /\.js$/,
                 enforce: 'pre',
                 use: ['source-map-loader'],
             },
-        ]
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
+            },
+        ],
     },
-    resolve: { extensions: ["*", ".tsx", ".ts", ".js", ".jsx" ] },
+    resolve: { extensions: ['*', '.tsx', '.ts', '.js', '.jsx'] },
     devServer: {
-        static: "./dist",
+        static: './dist',
         port: 3000,
         historyApiFallback: true,
     },
     plugins: [
         new HtmlWepackPlugin({
-            template: path.join(__dirname, "public", "index.html"),
-        })
-    ]
+            template: path.join(__dirname, 'public', 'index.html'),
+        }),
+    ],
 }

@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react'
+import { Spinner, Section } from './styles'
 
 export const LoadingGame = () => {
-    return(
-        <span>
-            Cargando...
-        </span>
+    return (
+        <Section>
+            <Spinner />
+        </Section>
     )
 }
