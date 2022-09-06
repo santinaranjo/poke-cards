@@ -1,38 +1,32 @@
 import React from 'react'
 import { GameGrid } from '../../components/GameGrid/GameGrid'
-import { StopWatch } from '../../components/StopWatch/StopWatch'
 import { Controlls } from '../../components/Controlls/Controlls'
 import { PairsCounter } from '../../components/PairsCounter/PairsCounter'
-import {
-    stopWatchContext,
-    stopWatchTimeContext,
-} from '../../context/stopWatchContext'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { gameCompletedContext } from '../../context/gameContext'
 import { createImageUrls } from '../../hooks/createImageUrls'
 import { Endgame } from '../../components/Endgame/Endgame'
 import { endgameCardContext } from '../../context/endgameContext'
+import { Timer } from '../../components/Timer/Timer'
+import { timerTimeContext } from '../../context/timerContext'
 
-export const OnePlayerNoTime = () => {
-    const stopWatchTime = useRecoilValue(stopWatchTimeContext)
-    const [stopWatchRunning, setStopWatchRunning] =
-        useRecoilState(stopWatchContext)
+export const OnePlayerByLevels = () => {
     const [gameCompleted, setGameCompleted] =
         useRecoilState(gameCompletedContext)
     const loading = createImageUrls()
     const [endgameCard, setEndgameCard] = useRecoilState(endgameCardContext)
+    const [timerTime, setTimerTime] = useRecoilState(timerTimeContext)
+    const [level, setLevel] = React.useState(0)
 
     React.useEffect(() => {
         if (gameCompleted) {
-            setStopWatchRunning(false)
-            console.log(`Has tardado ${stopWatchTime.min}:${stopWatchTime.seg}`)
             setEndgameCard(true)
         }
     }, [gameCompleted])
 
     React.useEffect(() => {
-        setStopWatchRunning(true)
         setEndgameCard(false)
+        setTimerTime({ min: '01', seg: '11' })
     }, [])
 
     return (
@@ -42,10 +36,9 @@ export const OnePlayerNoTime = () => {
             ) : (
                 <React.Fragment>
                     <div>
-                        <StopWatch />
+                        <Timer />
                     </div>
                     <div>
-                        {' '}
                         Parejas encontradas: <PairsCounter />
                         /8{' '}
                     </div>

@@ -18,7 +18,7 @@ interface CardState {
 export const GameGrid = () => {
     const imageURLs = useRecoilValue(imagesContext)
     const [cardData, setCardData] = React.useState<Array<CardState>>([])
-    const flippedCards = useRecoilValue(flippedCardsContext)
+    const [flippedCards, setFlippedCards] = useRecoilState(flippedCardsContext)
     const [gameCompleted, setGameCompleted] =
         useRecoilState(gameCompletedContext)
     const [gameRestart, setGameRestart] = useRecoilState(gameRestartContext)
@@ -67,6 +67,7 @@ export const GameGrid = () => {
         const cardsWithIdList = shuffleCards()
         setCardData(cardsWithIdList)
         setGameCompleted(false)
+        setFlippedCards([])
     }, [])
 
     React.useEffect(() => {
