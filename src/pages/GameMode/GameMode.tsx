@@ -7,11 +7,7 @@ export const GameMode = () => {
         <React.Fragment>
             {
                 <Section>
-                    <Link to="/oneplayer-notime">Jugar solo sin tiempo</Link>
-                    <Link to="/oneplayer-levels">
-                        Solo vs níveles con tiempo
-                    </Link>
-                    <span>Jugar contra un amigo</span>
+                    <Link to="/oneplayer-notime">Jugar</Link>
                 </Section>
             }
         </React.Fragment>
