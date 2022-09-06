@@ -42,7 +42,7 @@ export const OnePlayerNoTime = () => {
             ) : (
                 <React.Fragment>
                     <div>
-                        <StopWatch />
+                        Tiempo: <StopWatch />
                     </div>
                     <div>
                         {' '}
