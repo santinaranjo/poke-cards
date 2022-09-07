@@ -28,6 +28,6 @@ export const Section = styled.section`
     img {
         width: 350px;
         height: auto;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 `

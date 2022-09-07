@@ -12,6 +12,8 @@ import { gameCompletedContext } from '../../context/gameContext'
 import { createImageUrls } from '../../hooks/createImageUrls'
 import { Endgame } from '../../components/Endgame/Endgame'
 import { endgameCardContext } from '../../context/endgameContext'
+import { LoadingGame } from '../../components/LoadingGame/LoadingGame'
+import { Main, Data } from './styles'
 
 export const OnePlayerNoTime = () => {
     const stopWatchTime = useRecoilValue(stopWatchTimeContext)
@@ -38,21 +40,23 @@ export const OnePlayerNoTime = () => {
     return (
         <React.Fragment>
             {loading ? (
-                'Cargando...'
+                <LoadingGame />
             ) : (
-                <React.Fragment>
-                    <div>
-                        Tiempo: <StopWatch />
-                    </div>
-                    <div>
-                        {' '}
-                        Parejas encontradas: <PairsCounter />
-                        /8{' '}
-                    </div>
+                <Main>
+                    <Data>
+                        <div>
+                            Tiempo: <StopWatch />
+                        </div>
+                        <div>
+                            {' '}
+                            Parejas encontradas: <PairsCounter />
+                            /8{' '}
+                        </div>
+                    </Data>
                     <GameGrid />
                     <Controlls controllSelector="" />
                     <Endgame />
-                </React.Fragment>
+                </Main>
             )}
         </React.Fragment>
     )
