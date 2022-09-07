@@ -4,6 +4,7 @@ import { GameMode } from './pages/GameMode/GameMode'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyles'
 import { OnePlayerNoTime } from './pages/OnePlayerNoTime/OnePlayerNoTime'
+// Dev
 import { LoadingGame } from './components/LoadingGame/LoadingGame'
 
 export const App = () => {
@@ -14,7 +15,7 @@ export const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/gamemode" element={<GameMode />} />
                 <Route path="/oneplayer-notime" element={<OnePlayerNoTime />} />
-
+                // Dev
                 <Route path="/loading" element={<LoadingGame />} />
             </Routes>
         </BrowserRouter>
