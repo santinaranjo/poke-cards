@@ -15,10 +15,10 @@ export const Section = styled.section`
         text-align: center;
         text-decoration: none;
         font-size: 25px;
-        font-weight: bold;
+        font-weight: bolder;
         color: rgb(60, 90, 170);
         background-color: rgb(255, 210, 50);
-        border: 5px solid rgb(60, 90, 170);
+        border: 6px solid rgb(60, 90, 170);
         padding: 10px;
         border-radius: 20px;
         -webkit-box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
