@@ -1,7 +1,8 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+import backgroundCard from '../../assets/background-card.png'
 
-const cardWidth = "65px";
-const cardHeight = "100px";
+const cardWidth = '65px'
+const cardHeight = '100px'
 
 export const Card = styled.div`
     width: ${cardWidth};
@@ -15,11 +16,11 @@ export const Card = styled.div`
         transition: 150ms;
         cursor: pointer;
         perspective: 1000px;
-        transition: all .25s ease-in-out;
+        transition: all 0.25s ease-in-out;
         width: ${cardWidth};
         height: ${cardHeight};
     }
-    
+
     .card-flip {
         .front {
             transform: perspective(1000px) rotateY(-180deg);
@@ -29,9 +30,10 @@ export const Card = styled.div`
         }
     }
 
-    .front, .back {
+    .front,
+    .back {
         position: absolute;
-        transition: all .25s ease-in-out;
+        transition: all 0.25s ease-in-out;
         width: ${cardWidth};
         height: ${cardHeight};
         backface-visibility: hidden;
@@ -39,11 +41,15 @@ export const Card = styled.div`
     }
 
     .front {
-        background-color: blue;
+        background-color: rgb(60, 90, 170);
+        border-radius: 5px;
+        background-image: url(${backgroundCard});
+        background-size: 30px;
     }
     .back {
         transform: rotateY(180deg);
-        background-color: green;
+        background-color: rgb(255, 210, 50);
+        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;

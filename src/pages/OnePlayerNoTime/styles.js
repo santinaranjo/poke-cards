@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import background from '../../assets/background.jpeg'
 
 export const Main = styled.main`
     width: 100%;
@@ -7,11 +8,40 @@ export const Main = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(${background});
+    background-size: cover;
 `
 
 export const Data = styled.section`
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     & div:first-child {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+    & div:first-child,
+    & div:nth-child(2) {
+        font-size: 15px;
+        font-weight: bolder;
+        color: rgb(60, 90, 170);
+        background-color: rgb(255, 210, 50);
+        border: 6px solid rgb(60, 90, 170);
+        padding: 10px;
+        border-radius: 20px;
+    }
+`
+
+export const SectionControlls = styled.section`
+    button {
+        font-size: 15px;
+        font-weight: bolder;
+        color: rgb(60, 90, 170);
+        background-color: rgb(255, 210, 50);
+        border: 6px solid rgb(60, 90, 170);
+        padding: 10px;
+        border-radius: 20px;
+    }
+    & button:nth-child(2) {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 `

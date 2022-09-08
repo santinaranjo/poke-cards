@@ -13,7 +13,7 @@ import { createImageUrls } from '../../hooks/createImageUrls'
 import { Endgame } from '../../components/Endgame/Endgame'
 import { endgameCardContext } from '../../context/endgameContext'
 import { LoadingGame } from '../../components/LoadingGame/LoadingGame'
-import { Main, Data } from './styles'
+import { Main, Data, SectionControlls } from './styles.js'
 
 export const OnePlayerNoTime = () => {
     const stopWatchTime = useRecoilValue(stopWatchTimeContext)
@@ -54,7 +54,9 @@ export const OnePlayerNoTime = () => {
                         </div>
                     </Data>
                     <GameGrid />
-                    <Controlls controllSelector="" />
+                    <SectionControlls>
+                        <Controlls controllSelector="" />
+                    </SectionControlls>
                     <Endgame />
                 </Main>
             )}

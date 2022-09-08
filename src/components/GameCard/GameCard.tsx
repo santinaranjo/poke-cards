@@ -98,7 +98,7 @@ export const GameCard = (card: GameCardParams) => {
     return (
         <Card onClick={handleClick}>
             <div className={`card${flip ? '-flip' : ''}`}>
-                <div className="front">Pa lante</div>
+                <div className="front"></div>
                 <div className="back">
                     <img src={card.url} />
                 </div>
