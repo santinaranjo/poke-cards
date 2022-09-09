@@ -39,6 +39,7 @@ export const SectionControlls = styled.section`
         border: 6px solid rgb(60, 90, 170);
         padding: 10px;
         border-radius: 20px;
+        cursor: pointer;
     }
     & button:nth-child(2) {
         margin-left: 10px;
