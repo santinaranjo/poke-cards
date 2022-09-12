@@ -13,6 +13,8 @@ import {
     cardsToValidateContext,
     pairsCounterContext,
 } from '../../context/cardContext'
+import { endgameModeContext } from '../../context/endgameContext'
+import { flushSync } from 'react-dom'
 
 export const TwoPlayers = () => {
     const [gameCompleted, setGameCompleted] =
@@ -29,9 +31,20 @@ export const TwoPlayers = () => {
     const [playerTurn, setPlayerTurn] = React.useState<string>('playerone')
     const [playerOnePairs, setPlayerOnePairs] = React.useState(0)
     const [playerTwoPairs, setPlayerTwoPairs] = React.useState(0)
+    const [endgameMode, setEndgameMode] = useRecoilState(endgameModeContext)
+    const [winner, setWinner] = React.useState('')
 
     React.useEffect(() => {
         if (gameCompleted) {
+            flushSync(() => {
+                if (playerOnePairs > playerTwoPairs) {
+                    setWinner('Jugador 1')
+                } else if (playerTwoPairs > playerOnePairs) {
+                    setWinner('Jugador 2')
+                } else {
+                    setWinner('EMPATE')
+                }
+            })
             setEndgameCard(true)
         }
     }, [gameCompleted])
@@ -39,6 +52,7 @@ export const TwoPlayers = () => {
     React.useEffect(() => {
         setEndgameCard(false)
         setPlayerTurn('playerone')
+        setEndgameMode('twoplayers')
     }, [])
 
     React.useEffect(() => {
@@ -97,7 +111,7 @@ export const TwoPlayers = () => {
                     <LoadCounter>
                         <PairsCounter />
                     </LoadCounter>
-                    <Endgame />
+                    <Endgame playerWin={winner} restartOpt={restartScore} />
                 </Main>
             )}
         </React.Fragment>

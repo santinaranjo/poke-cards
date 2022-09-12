@@ -11,7 +11,7 @@ export const Section = styled.section`
     align-items: center;
     justify-content: center;
     a {
-        width: 180px;
+        width: 260px;
         text-align: center;
         text-decoration: none;
         font-size: 25px;
@@ -24,6 +24,9 @@ export const Section = styled.section`
         -webkit-box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
+    }
+    & a:first-of-type {
+        margin-bottom: 15px;
     }
     img {
         width: 350px;

@@ -8,7 +8,8 @@ export const GameMode = () => {
         <React.Fragment>
             <Section>
                 <img src={mainLogo} />
-                <Link to="/oneplayer-notime">Jugar</Link>
+                <Link to="/oneplayer-notime">Jugar solo</Link>
+                <Link to="/two-players">Contra un amigo</Link>
             </Section>
         </React.Fragment>
     )
