@@ -14,3 +14,8 @@ export const activeCardsContext = atom({
     key: 'activeCardsContext',
     default: false,
 })
+
+export const pairsCounterContext = atom({
+    key: 'pairsCounterContext',
+    default: 0,
+})

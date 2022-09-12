@@ -13,7 +13,10 @@ import { activeCardsContext } from '../../context/cardContext'
 import { gameRestartContext } from '../../context/gameContext'
 import { endgameCardContext } from '../../context/endgameContext'
 
-export const Controlls = (param: { controllSelector: string }) => {
+export const Controlls = (param: {
+    controllSelector: string
+    restartScore?: any
+}) => {
     const [stopWatchRunning, setStopWatchRunning] =
         useRecoilState<any>(stopWatchContext)
     const [flippedCards, setFlippedCards] =
@@ -33,6 +36,7 @@ export const Controlls = (param: { controllSelector: string }) => {
             setCardsToValidate([])
             setTimeout(() => setGameRestart(true), 300)
             setEndgameCard(false)
+            param.restartScore()
         })
         setStopWatchRunning(true)
     }

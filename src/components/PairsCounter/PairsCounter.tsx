@@ -1,10 +1,14 @@
 import React from 'react'
-import { useRecoilValue } from 'recoil'
-import { flippedCardsContext } from '../../context/cardContext'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import {
+    flippedCardsContext,
+    pairsCounterContext,
+} from '../../context/cardContext'
 
 export const PairsCounter = () => {
     const flippedCards = useRecoilValue(flippedCardsContext)
-    const [flippedCardsNumer, setFlippedCardsNumber] = React.useState(0)
+    const [flippedCardsNumber, setFlippedCardsNumber] =
+        useRecoilState(pairsCounterContext)
 
     React.useEffect(() => {
         if (flippedCards.length > 1) {
@@ -17,7 +21,7 @@ export const PairsCounter = () => {
 
     return (
         <React.Fragment>
-            <span>{flippedCardsNumer}</span>
+            <span>{flippedCardsNumber}</span>
         </React.Fragment>
     )
 }

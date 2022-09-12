@@ -17,9 +17,10 @@ export const Data = styled.section`
     & div:first-child {
         margin-bottom: 5px;
         margin-top: 10px;
+        text-align: center;
     }
     & div:first-child,
-    & div:nth-child(2) {
+    & p {
         font-size: 15px;
         font-weight: bolder;
         color: rgb(60, 90, 170);
@@ -27,6 +28,10 @@ export const Data = styled.section`
         border: 6px solid rgb(60, 90, 170);
         padding: 10px;
         border-radius: 20px;
+    }
+    & div:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
     }
 `
 
@@ -48,4 +53,8 @@ export const SectionControlls = styled.section`
         margin-left: 10px;
         margin-right: 10px;
     }
+`
+
+export const LoadCounter = styled.div`
+    display: none;
 `
