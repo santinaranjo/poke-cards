@@ -35,36 +35,10 @@ export const TwoPlayers = () => {
     const [winner, setWinner] = React.useState('')
 
     React.useEffect(() => {
-        if (gameCompleted) {
-            flushSync(() => {
-                if (playerOnePairs > playerTwoPairs) {
-                    setWinner('Jugador 1')
-                } else if (playerTwoPairs > playerOnePairs) {
-                    setWinner('Jugador 2')
-                } else {
-                    setWinner('EMPATE')
-                }
-            })
-            setEndgameCard(true)
-        }
-    }, [gameCompleted])
-
-    React.useEffect(() => {
         setEndgameCard(false)
         setPlayerTurn('playerone')
         setEndgameMode('twoplayers')
     }, [])
-
-    React.useEffect(() => {
-        if (flippedCardsNumber > validatedCards) {
-            if (playerTurn === 'playerone') {
-                setPlayerOnePairs(playerOnePairs + 1)
-            } else {
-                setPlayerTwoPairs(playerTwoPairs + 1)
-            }
-            setValidatedCards(validatedCards + 1)
-        }
-    }, [flippedCardsNumber])
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -78,9 +52,37 @@ export const TwoPlayers = () => {
         }, 500)
     }, [cardsToValidate])
 
+    React.useEffect(() => {
+        if (flippedCardsNumber > validatedCards) {
+            if (playerTurn === 'playerone') {
+                setPlayerOnePairs(playerOnePairs + 1)
+            } else {
+                setPlayerTwoPairs(playerTwoPairs + 1)
+            }
+            setValidatedCards(validatedCards + 1)
+        }
+    }, [flippedCardsNumber])
+
+    React.useEffect(() => {
+        if (gameCompleted) {
+            if (playerOnePairs > playerTwoPairs) {
+                setWinner('Jugador 1')
+            } else if (playerTwoPairs > playerOnePairs) {
+                setWinner('Jugador 2')
+            } else {
+                setWinner('EMPATE')
+            }
+            setTimeout(() => {
+                setEndgameCard(true)
+            }, 600)
+        }
+    }, [gameCompleted])
+
     const restartScore = () => {
         setPlayerOnePairs(0)
         setPlayerTwoPairs(0)
+        setValidatedCards(0)
+        setFlippedCardsNumber(0)
     }
 
     return (
