@@ -1,7 +1,7 @@
 import React from 'react'
 import { Home } from './pages/Home/Home'
 import { GameMode } from './pages/GameMode/GameMode'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyles'
 import { OnePlayerNoTime } from './pages/OnePlayerNoTime/OnePlayerNoTime'
 import { TwoPlayers } from './pages/TwoPlayers/TwoPlayers'
@@ -10,7 +10,7 @@ import { LoadingGame } from './components/LoadingGame/LoadingGame'
 
 export const App = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <GlobalStyle />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -20,6 +20,6 @@ export const App = () => {
                 // Dev
                 <Route path="/loading" element={<LoadingGame />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
