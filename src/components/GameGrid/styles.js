@@ -9,6 +9,6 @@ export const Section = styled.section`
         flex-grow: 1;
         flex-shrink: 0;
         flex-basis: 21%;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 `

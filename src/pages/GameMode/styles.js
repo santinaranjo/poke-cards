@@ -11,10 +11,10 @@ export const Section = styled.section`
     align-items: center;
     justify-content: center;
     a {
-        width: 260px;
+        width: 250px;
         text-align: center;
         text-decoration: none;
-        font-size: 25px;
+        font-size: 23px;
         font-weight: bolder;
         color: rgb(60, 90, 170);
         background-color: rgb(255, 210, 50);
@@ -29,7 +29,7 @@ export const Section = styled.section`
         margin-bottom: 15px;
     }
     img {
-        width: 350px;
+        width: 300px;
         height: auto;
         margin-bottom: 20px;
     }

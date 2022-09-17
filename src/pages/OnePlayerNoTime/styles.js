@@ -13,7 +13,7 @@ export const Main = styled.main`
 `
 
 export const Data = styled.section`
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     & div:first-child {
         margin-bottom: 5px;
         margin-top: 10px;
