@@ -4,7 +4,7 @@ import backgroundCard from '../../assets/background-card.png'
 const cardWidth = '65px'
 const cardHeight = '100px'
 const smallerCardWidth = '55px'
-const smallerCardHeight = '70px'
+const smallerCardHeight = '67px'
 
 export const Card = styled.div`
     width: ${cardWidth};
