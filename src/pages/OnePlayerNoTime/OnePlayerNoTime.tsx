@@ -14,6 +14,7 @@ import { Endgame } from '../../components/Endgame/Endgame'
 import { endgameCardContext } from '../../context/endgameContext'
 import { LoadingGame } from '../../components/LoadingGame/LoadingGame'
 import { Main, Data, SectionControlls } from './styles.js'
+import { endgameModeContext } from '../../context/endgameContext'
 
 export const OnePlayerNoTime = () => {
     const stopWatchTime = useRecoilValue(stopWatchTimeContext)
@@ -23,6 +24,7 @@ export const OnePlayerNoTime = () => {
         useRecoilState(gameCompletedContext)
     const loading = createImageUrls()
     const [endgameCard, setEndgameCard] = useRecoilState(endgameCardContext)
+    const [endgameMode, setEndgameMode] = useRecoilState(endgameModeContext)
 
     React.useEffect(() => {
         if (gameCompleted) {
@@ -35,6 +37,7 @@ export const OnePlayerNoTime = () => {
     React.useEffect(() => {
         setStopWatchRunning(true)
         setEndgameCard(false)
+        setEndgameMode('oneplayer')
     }, [])
 
     return (
