@@ -5,6 +5,9 @@ export const Section = styled.section`
     flex-wrap: wrap;
     width: 300px;
     margin-left: 10px;
+    @media screen and (max-width: 320px) {
+        width: 270px;
+    }
     div {
         flex-grow: 1;
         flex-shrink: 0;

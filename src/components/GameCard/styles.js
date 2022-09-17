@@ -2,12 +2,17 @@ import styled from 'styled-components'
 import backgroundCard from '../../assets/background-card.png'
 
 const cardWidth = '65px'
-const cardHeight = '90px'
+const cardHeight = '100px'
+const smallerCardWidth = '55px'
+const smallerCardHeight = '70px'
 
 export const Card = styled.div`
     width: ${cardWidth};
     height: ${cardHeight};
-
+    @media screen and (max-width: 320px) {
+        width: ${smallerCardWidth};
+        height: ${smallerCardHeight};
+    }
     .card {
         width: 65px;
         height: 100px;
@@ -19,6 +24,10 @@ export const Card = styled.div`
         transition: all 0.25s ease-in-out;
         width: ${cardWidth};
         height: ${cardHeight};
+        @media screen and (max-width: 320px) {
+            width: ${smallerCardWidth};
+            height: ${smallerCardHeight};
+        }
     }
 
     .card-flip {
@@ -36,6 +45,10 @@ export const Card = styled.div`
         transition: all 0.25s ease-in-out;
         width: ${cardWidth};
         height: ${cardHeight};
+        @media screen and (max-width: 320px) {
+            width: ${smallerCardWidth};
+            height: ${smallerCardHeight};
+        }
         backface-visibility: hidden;
         cursor: pointer;
     }
